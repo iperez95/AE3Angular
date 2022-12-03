@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Videojuego } from '../videojuego';
+import { VideojuegoService } from '../videojuegos.service';
 
 @Component({
   selector: 'app-detalle-videojuego-component',
@@ -6,15 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detalle-videojuego-component.component.css']
 })
 export class DetalleVideojuegoComponentComponent implements OnInit {
-
-  listaVideojuegos = [
-    {id : 1, titulo : 'Mario Bros', compania : 'Electronic', image : {src: '/assets/Images/Mario.png'},  valoracionMedia : 4.5},
-    {id : 2, titulo : 'Mario Kart', compania : 'Electronic', image : {src: '/assets/Images/MarioKart.jpg'}, valoracionMedia : 4.8},
-    {id : 3, titulo : 'Metroid Dread', compania : 'Electronic', image : {src: '/assets/Images/metroid.png'}, valoracionMedia : 4.9},
-  ];
+  videoJuego: Videojuego;
+  constructor(
+    private videojuegosService: VideojuegoService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.route.params.forEach((params: Params) => {
+      if (params['id'] !== undefined) {
+          const id = +params['id'];
+          let videojuego = this.videojuegosService.getVideoJuegoById(id);
+          if (!videojuego) {
+            throw new Error('Videojuego con id no encontrado');
+          }
+
+          this.videoJuego = videojuego;
+      }
+    });
   }
 
 }

@@ -1,26 +1,24 @@
-<p>detalle-videojuego-component works!</p>
-
 <div id="lista">
-    <table *ngFor="let juego of listaVideojuegos; index as i">
+    <table *ngIf="videoJuego">
         <tr>
-            <td>ID: {{juego.id}}</td>
+            <td>ID: {{videoJuego.id}}</td>
         </tr>
         <tr>
-            <td>Título: {{juego.titulo}} </td>
+            <td>Título: {{videoJuego.titulo}} </td>
+        </tr>
+        <tr>
+            <td>Compañia: {{videoJuego.compania}} </td>
         </tr>
         <tr>     
-            <td>Valoración: {{juego.valoracionMedia}}</td>
+            <td>Valoración: {{videoJuego.valoracionMedia}}</td>
         </tr>
         <tr>
-            <td><img [src]="juego.image.src"></td>
+            <td><img [src]="videoJuego.image.src"></td>
 
         </tr>
         
         <br>
             <button routerLink="/lista">Volver</button>
-            <br>
-            <br>
-            
     </table>
 </div>
 

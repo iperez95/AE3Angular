@@ -7,7 +7,7 @@ import {ContactoComponentComponent} from './contacto-component/contacto-componen
 
 const routes: Routes = [
 
-  {path:"detalles:id", component:DetalleVideojuegoComponentComponent},
+  {path:"detalle/:id", component: DetalleVideojuegoComponentComponent},
   {path:"", component: ListaVideojuegosComponentComponent}, 
   {path:"nosotros", component: SobreNosotrosComponentComponent}, 
   {path:"contacto", component: ContactoComponentComponent},

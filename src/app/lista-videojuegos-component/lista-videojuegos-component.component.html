@@ -2,7 +2,7 @@
 
 
 <div id="lista">
-    <table *ngFor="let juego of listaVideojuego; index as i">
+    <table *ngFor="let juego of videoJuegos; index as i">
         <tr>
             <td>ID: {{juego.id}}</td>
         </tr>
@@ -11,10 +11,10 @@
         </tr>
         <tr>     
             <td>Valoración: {{juego.valoracionMedia}}</td>
-        </tr><br>
-            <button routerLink="/detalles:id">Detalles</button>
-            <br>
-            <br>
-            
+        </tr>
+        <br>
+        <button routerLink="/detalle/{{juego.id}}">Detalles</button>
+        <br>
+        <br> 
     </table>
 </div>
