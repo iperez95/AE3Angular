@@ -1,0 +1,33 @@
+.menu{
+    display: none;
+}
+
+.menu > a{
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(107, 81, 177);
+    margin-left: 20px auto;
+    margin-right: 20px auto;
+    justify-content: space-evenly;
+
+
+}
+
+ul > li {
+    float: left;
+    margin: 10px;
+}
+
+ul > li > a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+a:hover {
+    background-color: rgb(205, 182, 216);
+  }

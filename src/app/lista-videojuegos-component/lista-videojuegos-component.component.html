@@ -1,0 +1,20 @@
+<h1>Lista de videojuegos</h1>
+
+
+<div id="lista">
+    <table *ngFor="let juego of listaVideojuego; index as i">
+        <tr>
+            <td>ID: {{juego.id}}</td>
+        </tr>
+        <tr>
+            <td>Título: {{juego.titulo}} </td>
+        </tr>
+        <tr>     
+            <td>Valoración: {{juego.valoracionMedia}}</td>
+        </tr><br>
+            <button routerLink="/detalles:id">Detalles</button>
+            <br>
+            <br>
+            
+    </table>
+</div>

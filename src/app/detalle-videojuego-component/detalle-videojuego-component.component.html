@@ -1,0 +1,27 @@
+<p>detalle-videojuego-component works!</p>
+
+<div id="lista">
+    <table *ngFor="let juego of listaVideojuegos; index as i">
+        <tr>
+            <td>ID: {{juego.id}}</td>
+        </tr>
+        <tr>
+            <td>Título: {{juego.titulo}} </td>
+        </tr>
+        <tr>     
+            <td>Valoración: {{juego.valoracionMedia}}</td>
+        </tr>
+        <tr>
+            <td><img [src]="juego.image.src"></td>
+
+        </tr>
+        
+        <br>
+            <button routerLink="/lista">Volver</button>
+            <br>
+            <br>
+            
+    </table>
+</div>
+
+
