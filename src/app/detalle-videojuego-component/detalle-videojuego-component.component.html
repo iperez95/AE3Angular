@@ -1,25 +1,33 @@
 <div id="lista">
-    <table *ngIf="videoJuego">
-        <tr>
-            <td>ID: {{videoJuego.id}}</td>
-        </tr>
-        <tr>
-            <td>Título: {{videoJuego.titulo}} </td>
-        </tr>
-        <tr>
-            <td>Compañia: {{videoJuego.compania}} </td>
-        </tr>
-        <tr>     
-            <td>Valoración: {{videoJuego.valoracionMedia}}</td>
-        </tr>
-        <tr>
-            <td><img [src]="videoJuego.image.src"></td>
-
-        </tr>
-        
-        <br>
-            <button routerLink="/lista">Volver</button>
-    </table>
+    <ng-container *ngIf="videoJuego; then mostrarVideoJuego; else mostrarError">
+    </ng-container>
+    <ng-template #mostrarVideoJuego>
+        <table>
+            <tr>
+                <td>ID: {{videoJuego.id}}</td>
+            </tr>
+            <tr>
+                <td>Título: {{videoJuego.titulo}} </td>
+            </tr>
+            <tr>
+                <td>Compañia: {{videoJuego.compania}} </td>
+            </tr>
+            <tr>     
+                <td>Valoración: {{videoJuego.valoracionMedia}}</td>
+            </tr>
+            <tr>
+                <td><img [src]="videoJuego.image.src"></td>
+    
+            </tr>
+            
+            <br>
+                <button routerLink="/lista">Volver</button>
+        </table>
+    </ng-template>
+    <ng-template #mostrarError>
+        <h1>El videojuego que buscas no existe</h1>
+        <button routerLink="/lista">Volver al listado</button>
+    </ng-template>
 </div>
 
 
