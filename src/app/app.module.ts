@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { CookieService } from "ngx-cookie-service";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { ListaVideojuegosComponentComponent } from './lista-videojuegos-componen
 import { NavComponentComponent } from './nav-component/nav-component.component';
 import { SobreNosotrosComponentComponent } from './sobre-nosotros-component/sobre-nosotros-component.component';
 import { VideojuegoService } from './videojuegos.service';
+import { UsuarioService } from './usuario.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { VideojuegoService } from './videojuegos.service';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [VideojuegoService],
+  providers: [VideojuegoService, UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

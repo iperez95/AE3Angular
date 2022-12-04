@@ -1,3 +1,20 @@
-
-<app-nav-component></app-nav-component>
-<router-outlet></router-outlet>
+<!-- Al entrar a la página, lo primero que veremos será el formulario de login, siempre y cuando el usuario no esté loggeado. 
+Para comprobar si está o no loggeado, usaremos un ngIF, y dos ng templates. Si está loggeado mostraremos el template "mostrarPagina" la cual lleva a la lista
+de videojuegos, y si no está loggeado usaremos el template "mostrarLoggin", el cual tiene el formulario de login. -->
+<ng-container *ngIf="usuarioLoggeado; then mostrarPagina; else mostrarLoggin"></ng-container>
+<ng-template #mostrarLoggin>
+    <div class="login" *ngIf="!usuarioLoggeado">
+        <form class="login-form" method="post">
+            <h1>Lista de videojuegos</h1>
+            <h2>Introduce tu usuario  y contraseña</h2>
+            <input type="text" name="email" [(ngModel)]="email" placeholder="Email" required="required"><br><br>
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Contraseña" required="required"><br><br>
+            <button type="submit" (click)="login()">Iniciar sesion</button>
+        </form>
+    </div>
+</ng-template>
+<ng-template #mostrarPagina>
+    <!-- Al componente nav, le pasamos la variable "usuario" con el valor de la variable "usuarioLoggeado" -->
+    <app-nav-component [usuario]="usuarioLoggeado"></app-nav-component>
+    <router-outlet></router-outlet>
+</ng-template>

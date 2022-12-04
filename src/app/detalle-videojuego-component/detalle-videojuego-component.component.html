@@ -1,4 +1,6 @@
 <div id="lista">
+    <!-- Mediante un ngIF, comprobamos que la variable "videojuego tiene valor, de ser así, mediante un ng template, el cual contiene una tabla con los atributos
+        del videojuego, mostraremos los datos". En caso de no tener valor, mediante un ng template, mostraremos un texto "El videojuego que buscas no existe"-->
     <ng-container *ngIf="videoJuego; then mostrarVideoJuego; else mostrarError">
     </ng-container>
     <ng-template #mostrarVideoJuego>

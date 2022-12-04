@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +8,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  listaVideojuegos = [
-    {id : 1, titulo : 'Mario Bros', compania : 'Electronic', image : {src: '/assets/Images/Mario.png'},  valoracionMedia : 4.5},
-    {id : 2, titulo : 'Mario Kart', compania : 'Electronic', image : {src: '/assets/Images/MarioKart.jpg'}, valoracionMedia : 4.8},
-    {id : 3, titulo : 'Metroid Dread', compania : 'Electronic', image : {src: '/assets/Images/metroid.png'}, valoracionMedia : 4.9},
-  ];
 
   title = 'AE3Angular';
+
+  //Declaramos las propiedades del componente principal
+  email: string;
+  password: string;
+  usuarioLoggeado: string;
+  //Creamos un constructor con el usuarioservice, para acceder a los datos de usuario y el router para gestionar las redirecciones
+  constructor(private usuariosService: UsuarioService, private router: Router){}
+  //El método login sirve para validar el usuario. Usando los atributos ngModel en el html del componente, hacemos binding a las propiedades "email" y "password"
+  //de este componente, mediante el evento "click" en el botón del HTML, el cual llama a esta función.
+  //Usamos el "UsuariosService" para encontrar el usuario con el email y la contraseña introducidas, y en caso de haberla encontrado, damos valor a la propiedad "UsuarioLoggeado".
+  //Luego, redirijimos al usuario a la url de lista.
+  login() {
+    let usuario = this.usuariosService.getUsuarioByEmailAndPassword(this.email, this.password)
+    if (!usuario) {
+      console.log("usuario no encontrado");
+      return;
+    }
+    
+    this.usuarioLoggeado = this.email;
+    this.router.navigateByUrl("lista")
+  }
 }

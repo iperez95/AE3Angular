@@ -8,6 +8,8 @@ import { VideojuegoService } from '../videojuegos.service';
   templateUrl: './detalle-videojuego-component.component.html',
   styleUrls: ['./detalle-videojuego-component.component.css']
 })
+
+//Cargamos el servicio de videojuegos y el route para recoger los parametros de la url
 export class DetalleVideojuegoComponentComponent implements OnInit {
   videoJuego: Videojuego;
   constructor(
@@ -16,6 +18,8 @@ export class DetalleVideojuegoComponentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //recorremos los parámetros del route. Si tenemos un parámetro llamado "id" con valor, entonces buscamos el videojuego mediante nuestro videojuegosService
+    //si no encontramos el video juego devolvemos un error, y si lo contramos, asignamos a la propiedad "videojuego" el videojuego devuelto por el service.
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
           const id = +params['id'];

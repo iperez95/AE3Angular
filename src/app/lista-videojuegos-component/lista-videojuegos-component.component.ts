@@ -8,6 +8,7 @@ import { VideojuegoService } from '../videojuegos.service';
   styleUrls: ['./lista-videojuegos-component.component.css']
 })
 export class ListaVideojuegosComponentComponent implements OnInit {
+  //Recogemos el array de videojuegos, de nuestro service.
   videoJuegos: Videojuego[];
   constructor(private videojuegosService: VideojuegoService) { }
   ngOnInit(): void {
